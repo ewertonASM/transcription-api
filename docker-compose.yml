@@ -1,0 +1,37 @@
+version: '2.4'
+x-database-variables: &database-variables
+  SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/bootdb?createDatabaseIfNotExist=true
+  SPRING_DATASOURCE_USERNAME: root
+  SPRING_DATASOURCE_PASSWORD: root
+  MAX_FILE_SIZE: 15MB
+  MAX_REQUEST_SIZE: 15MB
+  RABBITMQ_HOST: localhost
+  RABBITMQ_PORT: 5672
+  RABBITMQ_USERNAME: guest
+  RABBITMQ_PASSWORD: guest
+  RABBITMQ_QUEUE_EXTRACT: audio-extract
+  RABBITMQ_QUEUE_SUBTITLE: subtitle-receive
+  RABBITMQ_EXCHANGE: amp.direct
+  TRANSLATOR_URL: https://translation.googleapis.com
+  TRANSLATOR_API_KEY: AIzaSyCYX9soUSBUk55LBfqXpIycVWPEczgjTNk
+services:
+  db:
+    image: mysql
+    container_name: transcription_db
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+    ports: 
+      - "3306:3306"
+    volumes:
+      - transcription_data:/var/lib/mysql
+  
+  stock-manager-inatel:
+    image: emoura/transcription-api:0.0.1-SNAPSHOT
+    ports:
+    - "8081:8081"
+    environment:
+      <<: *database-variables
+
+volumes:
+  stonks_data:
+  stock_data:
