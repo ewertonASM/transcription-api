@@ -68,7 +68,7 @@ spring:
     servlet:
         multipart:
             max-file-size:  ${MAX_FILE_SIZE:15MB}
-            max-request-size:  ${SPRING_DATASOURCE_PASSWORD:15MB}
+            max-request-size:  ${MAX_REQUEST_SIZE:15MB}
     rabbitmq:
         host: ${RABBITMQ_HOST:localhost}
         port: ${RABBITMQ_PORT:5672}

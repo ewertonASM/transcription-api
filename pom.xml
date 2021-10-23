@@ -141,8 +141,8 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>br.com.inatel.transcriptGatewayApi.TranscriptionApplication.java</mainClass>
-                    <finalName>rabbitmq-tutorials</finalName>
+                    <mainClass>br.com.inatel.transcriptGatewayApi.TranscriptionApplication</mainClass>
+                    <finalName>rabbitmq-transcription-api</finalName>
                     <layout>ZIP</layout>
                 </configuration>
             </plugin>
@@ -162,7 +162,7 @@
 						</tags>
 					</to>
 					<container>
-						<mainClass>br.com.inatel.transcriptGatewayApi</mainClass>
+						<mainClass>br.com.inatel.transcriptGatewayApi.TranscriptionApplication</mainClass>
 					</container>
 				</configuration>
 			</plugin>

@@ -1,11 +1,11 @@
 version: '2.4'
 x-database-variables: &database-variables
-  SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/bootdb?createDatabaseIfNotExist=true
+  SPRING_DATASOURCE_URL: jdbc:mysql://transcription_db:3306/bootdb?createDatabaseIfNotExist=true
   SPRING_DATASOURCE_USERNAME: root
   SPRING_DATASOURCE_PASSWORD: root
   MAX_FILE_SIZE: 15MB
   MAX_REQUEST_SIZE: 15MB
-  RABBITMQ_HOST: localhost
+  RABBITMQ_HOST: rabbitmq
   RABBITMQ_PORT: 5672
   RABBITMQ_USERNAME: guest
   RABBITMQ_PASSWORD: guest
@@ -14,24 +14,66 @@ x-database-variables: &database-variables
   RABBITMQ_EXCHANGE: amp.direct
   TRANSLATOR_URL: https://translation.googleapis.com
   TRANSLATOR_API_KEY: AIzaSyCYX9soUSBUk55LBfqXpIycVWPEczgjTNk
+  
 services:
-  db:
+  transcription_db:
     image: mysql
-    container_name: transcription_db
-    environment: 
-      MYSQL_ROOT_PASSWORD: root
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bootdb
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    # networks:
+    #   - mysql-net
     ports: 
       - "3306:3306"
     volumes:
       - transcription_data:/var/lib/mysql
+
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    # networks:
+    #   - rabbitmq-net
+    
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+
+  # rabbitmq:
+  #   image: rabbitmq:3-management-alpine
+  #   container_name: 'rabbitmq'
+  #   ports:
+  #       - 5672:5672
+  #       - 15672:15672
+  #   volumes:
+  #       - rabbitmq_data: /var/lib/rabbitmq/
+  #       - rabbitmq_log: /var/log/rabbitmq
+  #   networks:
+  #       - rabbitmq_go_net
   
-  stock-manager-inatel:
+  transcription-api-inatel:
     image: emoura/transcription-api:0.0.1-SNAPSHOT
     ports:
     - "8081:8081"
     environment:
       <<: *database-variables
+    depends_on:
+      - rabbitmq
+      - transcription_db
+
+
+# networks:
+#   rabbitmq-net:
+#   mysql-net:
+
 
 volumes:
-  stonks_data:
-  stock_data:
+  transcription_data:
+  rabbitmq-data:

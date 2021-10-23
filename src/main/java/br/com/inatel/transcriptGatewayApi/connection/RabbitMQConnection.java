@@ -44,8 +44,8 @@ public class RabbitMQConnection {
     @PostConstruct
     private void add(){
 
-        Queue queueAudioExtract = this.queue("audio-extract");
-        Queue queueSubtitleReceive = this.queue("subtitle-receive");
+        Queue queueAudioExtract = this.queue(audioExtractQueue);
+        Queue queueSubtitleReceive = this.queue(subtitleQueue);
 
         DirectExchange exchange = this.directExchange();
 
