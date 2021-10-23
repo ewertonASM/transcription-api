@@ -1,18 +1,24 @@
 package br.com.inatel.transcriptGatewayApi.service;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class SendMessageService {
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    
+    private final RabbitTemplate rabbitTemplate;
 
-    public void messageSender(String queueName, Object mensagem){
+    @Value("${queue.audio_extract:audio-extract}")
+    String audioExtractQueue;
 
-        this.rabbitTemplate.convertAndSend(queueName, mensagem);
+    public void messageSender(Object mensagem){
+
+        this.rabbitTemplate.convertAndSend(audioExtractQueue, mensagem);
     }
     
 }

@@ -10,14 +10,10 @@ import java.net.URLConnection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
@@ -40,7 +36,7 @@ public class SubtitleService {
 
     private final SnippetSubtitleRepository snippetSubtitleRepository;
 
-    public String findSubtitle(String videoId, String language) {
+    public String findSubtitle(String videoId, String language) throws IOException {
 
         String subtitleFileName = videoId.concat(".srt");
 
@@ -57,41 +53,33 @@ public class SubtitleService {
 
 
 
-        try {
 
-            FileWriter writer = new FileWriter(subtitleFileName);
+        FileWriter writer = new FileWriter(subtitleFileName);
 
-            List<SnippetSubtitle> snippetSubtitleForFile = language.isEmpty() ? snippets : translatedSubtitle;
+        List<SnippetSubtitle> snippetSubtitleForFile = language.isEmpty() ? snippets : translatedSubtitle;
 
+    
+        Collections.sort(snippetSubtitleForFile);
         
-            Collections.sort(snippetSubtitleForFile);
-            
-            for(SnippetSubtitle snippet:snippetSubtitleForFile){
+        for(SnippetSubtitle snippet:snippetSubtitleForFile){
 
-                writer.write(snippet.getSnippet().split("/")[0] + System.lineSeparator());
-                writer.write(snippet.getTimeLimits() + System.lineSeparator());
-                writer.write(snippet.getText() + System.lineSeparator());
-                writer.write(System.lineSeparator());
+            writer.write(snippet.getSnippet().split("/")[0] + System.lineSeparator());
+            writer.write(snippet.getTimeLimits() + System.lineSeparator());
+            writer.write(snippet.getText() + System.lineSeparator());
+            writer.write(System.lineSeparator());
 
-            }
+        }
 
-            writer.close();
+        writer.close();
 
-            return subtitleFileName;
-
-
-        } catch (IOException e1) {
-            // TODO Auto-generated catch block
-            // e1.printStackTrace();
-            return null;
-        } 
+        return subtitleFileName;
 
         
 
 
     }
 
-    public void downloadPDFResource(HttpServletRequest request, HttpServletResponse response,
+    public void downloadResource(HttpServletRequest request, HttpServletResponse response,
 			        String subtitleFileName) throws IOException {
 
 		File file = new File(subtitleFileName);

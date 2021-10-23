@@ -20,11 +20,12 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.inatel.transcriptGatewayApi.dto.AudioForTranscriptionDTO;
+import br.com.inatel.transcriptGatewayApi.envs.Envs;
+import br.com.inatel.transcriptGatewayApi.exception.StorageFileNotFoundException;
 import br.com.inatel.transcriptGatewayApi.service.SendMessageService;
+import br.com.inatel.transcriptGatewayApi.service.StorageService;
 import br.com.inatel.transcriptGatewayApi.service.StreamingService;
 import br.com.inatel.transcriptGatewayApi.service.TranscriptionService;
-import br.com.inatel.transcriptGatewayApi.storage.StorageFileNotFoundException;
-import br.com.inatel.transcriptGatewayApi.storage.StorageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import reactor.core.publisher.Mono;
@@ -53,7 +54,7 @@ public class TranscriptionController {
 		return "uploadForm";
 	}
 
-    @GetMapping(value = "/upload-dir/{filename:.+}", produces = "video/mp4")
+    @GetMapping(value = "/tmp/{filename:.+}", produces = "video/mp4")
 	@ResponseBody
 	public Mono<Resource> serveFile(@PathVariable String filename) {
 
@@ -68,7 +69,10 @@ public class TranscriptionController {
 
         AudioForTranscriptionDTO message = transcriptionService.processToTranscription(file.getOriginalFilename());
        
-        sendMessage.messageSender("audio-extract", message);
+        sendMessage.messageSender(message);
+		
+		storageService.deleteOne(file.getOriginalFilename());
+		storageService.deleteOne(message.videoId+"."+Envs.AUDIO_EXT);
 
         return new ResponseEntity<>(message.getVideoId(), HttpStatus.CREATED);
 	}

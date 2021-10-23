@@ -23,18 +23,13 @@ services:
       - MYSQL_DATABASE=bootdb
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root
-    # networks:
-    #   - mysql-net
     ports: 
       - "3306:3306"
     volumes:
       - transcription_data:/var/lib/mysql
 
   rabbitmq:
-    image: rabbitmq:management-alpine
-    # networks:
-    #   - rabbitmq-net
-    
+    image: rabbitmq:management-alpine    
     ports:
       - 5672:5672
       - 15672:15672
@@ -45,21 +40,11 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
 
-
-  # rabbitmq:
-  #   image: rabbitmq:3-management-alpine
-  #   container_name: 'rabbitmq'
-  #   ports:
-  #       - 5672:5672
-  #       - 15672:15672
-  #   volumes:
-  #       - rabbitmq_data: /var/lib/rabbitmq/
-  #       - rabbitmq_log: /var/log/rabbitmq
-  #   networks:
-  #       - rabbitmq_go_net
-  
   transcription-api-inatel:
     image: emoura/transcription-api:0.0.1-SNAPSHOT
+    deploy:
+      restart_policy:
+        condition: on-failure
     ports:
     - "8081:8081"
     environment:
@@ -67,12 +52,6 @@ services:
     depends_on:
       - rabbitmq
       - transcription_db
-
-
-# networks:
-#   rabbitmq-net:
-#   mysql-net:
-
 
 volumes:
   transcription_data:

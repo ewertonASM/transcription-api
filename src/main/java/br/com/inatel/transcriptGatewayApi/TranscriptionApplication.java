@@ -8,8 +8,8 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-import br.com.inatel.transcriptGatewayApi.storage.StorageProperties;
-import br.com.inatel.transcriptGatewayApi.storage.StorageService;
+import br.com.inatel.transcriptGatewayApi.properties.StorageProperties;
+import br.com.inatel.transcriptGatewayApi.service.StorageService;
 
 // @Log4j2
 @EnableAsync

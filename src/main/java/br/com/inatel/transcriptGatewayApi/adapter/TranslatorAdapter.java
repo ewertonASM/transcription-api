@@ -1,15 +1,11 @@
 package br.com.inatel.transcriptGatewayApi.adapter;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.inatel.transcriptGatewayApi.dto.TranslateRequestDTO;
 import br.com.inatel.transcriptGatewayApi.dto.TranslateResponseDTO;
-import br.com.inatel.transcriptGatewayApi.envs.Envs;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -24,6 +20,8 @@ public class TranslatorAdapter {
 
     // @Cacheable(cacheNames = "Company", key="#identifier")
     public TranslateResponseDTO translateText(TranslateRequestDTO translateDTO){
+
+        log.debug("Translating snippet subtitle");
         
         String translatorUrl = baseUrl + "/language/translate/v2?key=" + apiKey;
 

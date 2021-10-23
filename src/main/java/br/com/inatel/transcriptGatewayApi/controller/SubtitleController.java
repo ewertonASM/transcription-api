@@ -26,21 +26,17 @@ public class SubtitleController {
 
     @GetMapping("/videos/{id}/subtitle")
 	public void findSubtitle(HttpServletRequest request, HttpServletResponse response,
-                @PathVariable String id, @RequestParam(required = false) Optional<String> lang) throws InterruptedException, ExecutionException {
+                @PathVariable String id, @RequestParam(required = false) Optional<String> lang) throws IOException {
 
         log.info("Downloading subtitle...");
-
+        
         String language = lang.isPresent() ? lang.get() : "";
         
         String subtitleFileName = subtitleService.findSubtitle(id, language);
         
-        log.debug("Downloading subtitle..." + subtitleFileName);
-        try {
-            subtitleService.downloadPDFResource(request, response, subtitleFileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        log.debug(subtitleFileName);
 
+        subtitleService.downloadResource(request, response, subtitleFileName);
 
 	}
     

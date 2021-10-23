@@ -6,10 +6,13 @@ import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Component
 public class RabbitMQConnection {
 
@@ -52,12 +55,13 @@ public class RabbitMQConnection {
         Binding bindingAudioExtract = this.relationship(queueAudioExtract, exchange);
         Binding bindingSubtitleReceive = this.relationship(queueSubtitleReceive, exchange);
 
+            this.amqpAdmin.declareQueue(queueAudioExtract);
+            this.amqpAdmin.declareQueue(queueSubtitleReceive);
+            this.amqpAdmin.declareExchange(exchange);
+            this.amqpAdmin.declareBinding(bindingAudioExtract);
+            this.amqpAdmin.declareBinding(bindingSubtitleReceive);
 
-        this.amqpAdmin.declareQueue(queueAudioExtract);
-        this.amqpAdmin.declareQueue(queueSubtitleReceive);
-        this.amqpAdmin.declareExchange(exchange);
-        this.amqpAdmin.declareBinding(bindingAudioExtract);
-        this.amqpAdmin.declareBinding(bindingSubtitleReceive);
+
 
     }
     

@@ -38,40 +38,9 @@ public class SnippetSubtitle implements Comparable<SnippetSubtitle>{
 
     private String snippet;
 
-    // @Override
-    // public int compareTo(SnippetSubtitle a, SnippetSubtitle b) {
-    //     // TODO Auto-generated method stub
-    //     return Integer.parseInt(a.getSnippet().split("/")[0]) - Integer.parseInt(b.getSnippet().split("/")[0]); 
-    // }
-
     @Override
     public int compareTo(SnippetSubtitle o) {
 
-
-        if (this.snippet == null && o.getSnippet() == null)
-            return 0;
-        if (this.snippet == null && o.getSnippet() != null)
-            return -1;
-        if (this.snippet != null && o.getSnippet() == null)
-            return +1;
-
-        
-        
-        // if (o.getSnippet() == null) {
-        //     log.info(">>**********************");
-        //     log.info(this.snippet + "==" + o.getSnippet());
-        //     log.info(this.snippet.split("/")[0] + "==" + o.getSnippet().split("/")[0]);
-        //     log.info(">>**********************");
-        //     return (o.getSnippet() == null) ? 0 : -1;
-        // }
-        // if (this.snippet == null) {
-        //     log.info(">>**********************");
-        //     log.info(this.snippet + "==" + o.getSnippet());
-        //     log.info(this.snippet.split("/")[0] + "==" + o.getSnippet().split("/")[0]);
-        //     log.info(">>**********************");
-        //     return 1;
-        // }
-        // TODO Auto-generated method stub
         return Integer.parseInt(this.snippet.split("/")[0]) - Integer.parseInt(o.getSnippet().split("/")[0]); 
 
     }
