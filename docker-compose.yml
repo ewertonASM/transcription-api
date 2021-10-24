@@ -31,8 +31,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=bootdb
-      # - MYSQL_USER=transcription-api
-      # - MYSQL_PASSWORD=12345678
     ports: 
       - "3306:3306"
     volumes:
@@ -71,19 +69,19 @@ services:
     ports:
       - "3000:3000"
 
-  # transcription-api-inatel:
-  #   image: emoura/transcription-api:0.0.1-SNAPSHOT
-  #   container_name: transcription-api
-  #   deploy:
-  #     restart_policy:
-  #       condition: on-failure
-  #   ports:
-  #   - "8081:8081"
-  #   environment:
-  #     <<: *database-variables
-  #   depends_on:
-  #     - rabbitmq
-  #     - transcription_db
+  transcription-api-inatel:
+    image: emoura/transcription-api:0.0.1-SNAPSHOT
+    container_name: transcription-api
+    deploy:
+      restart_policy:
+        condition: on-failure
+    ports:
+    - "8081:8081"
+    environment:
+      <<: *database-variables
+    depends_on:
+      - rabbitmq
+      - transcription_db
 
 volumes:
   transcription_data:

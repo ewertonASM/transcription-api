@@ -17,7 +17,7 @@
 		<java.version>11</java.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 		<jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
-        <docker.distroless.image>gcr.io/distroless/java:11</docker.distroless.image>
+        <docker.distroless.image>mariazevedo88/docker-ubuntu18-java11</docker.distroless.image>
         <docker.repo.url>emoura</docker.repo.url>
         <docker.repo.project>transcription-api</docker.repo.project>
         <docker.image.name>${docker.repo.url}/${docker.repo.project}</docker.image.name>
@@ -172,7 +172,20 @@
 					</to>
 					<container>
 						<mainClass>br.com.inatel.transcriptGatewayApi.TranscriptionApplication</mainClass>
+						<!-- <entrypoint> -->
+							<!-- <arg>./install.sh</arg> -->
+							<!-- <arg>./scripts/install.sh</arg> -->
+						<!-- </entrypoint> -->
 					</container>
+					<extraDirectories>
+						<paths>scripts</paths> <!-- Copies files from 'src/main/custom-extra-dir' -->
+						<permissions>
+							<permission>
+								<file>scripts/install.sh</file>
+								<mode>777</mode> <!-- Read/write/execute for owner, read/execute for group/other -->
+							</permission>
+						</permissions>
+					  </extraDirectories>
 				</configuration>
 			</plugin>
 			<!-- <plugin>
