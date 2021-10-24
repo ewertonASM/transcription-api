@@ -19,9 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import br.com.inatel.transcriptGatewayApi.exception.StorageException;
 import br.com.inatel.transcriptGatewayApi.exception.StorageFileNotFoundException;
 import br.com.inatel.transcriptGatewayApi.properties.StorageProperties;
-import lombok.extern.log4j.Log4j2;
 
-@Log4j2
 @Service
 public class FileSystemStorageService implements StorageService {
 

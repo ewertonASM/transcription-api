@@ -21,6 +21,8 @@ import org.springframework.util.FileCopyUtils;
 import br.com.inatel.transcriptGatewayApi.adapter.TranslatorAdapter;
 import br.com.inatel.transcriptGatewayApi.dto.TranslateRequestDTO;
 import br.com.inatel.transcriptGatewayApi.dto.TranslateResponseDTO;
+import br.com.inatel.transcriptGatewayApi.envs.Envs;
+import br.com.inatel.transcriptGatewayApi.exception.BadRequestException;
 import br.com.inatel.transcriptGatewayApi.model.SnippetSubtitle;
 import br.com.inatel.transcriptGatewayApi.repository.SnippetSubtitleRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,10 +40,18 @@ public class SubtitleService {
 
     public String findSubtitle(String videoId, String language) throws IOException {
 
-        String subtitleFileName = videoId.concat(".srt");
+        String subtitleFileName = Envs.TEMP_DIR + videoId + "." + Envs.SUBTITLE_EXT;
 
         List<SnippetSubtitle> translatedSubtitle = new LinkedList<>();
         List<SnippetSubtitle> snippets = snippetSubtitleRepository.findByVideoId(videoId);
+
+        if(snippets.isEmpty()){
+            throw new BadRequestException("subtitle not found!");
+        }
+
+        if(snippets.size()+1 != Integer.parseInt(snippets.get(0).getSnippet().split("/")[1])){
+            throw new BadRequestException("subtitle in processing, try again later");
+        }
 
         if(!language.isEmpty()){
 
@@ -50,9 +60,6 @@ public class SubtitleService {
             log.info("translation completed!");
 
         }
-
-
-
 
         FileWriter writer = new FileWriter(subtitleFileName);
 
@@ -74,9 +81,6 @@ public class SubtitleService {
 
         return subtitleFileName;
 
-        
-
-
     }
 
     public void downloadResource(HttpServletRequest request, HttpServletResponse response,
@@ -85,10 +89,8 @@ public class SubtitleService {
 		File file = new File(subtitleFileName);
 		if (file.exists()) {
 
-			//get the mimetype
 			String mimeType = URLConnection.guessContentTypeFromName(file.getName());
 			if (mimeType == null) {
-				//unknown mimetype so set the mimetype to application/octet-stream
 				mimeType = "application/octet-stream";
 			}
 
@@ -117,9 +119,9 @@ public class SubtitleService {
             String textToTranslate = snippet.getText();
             TranslateRequestDTO translateRequestDTO = TranslateRequestDTO.builder()
                                                             .q(textToTranslate)
-                                                            .source("en")
+                                                            .source(Envs.TRANSLATE_SOURCE)
                                                             .target(language)
-                                                            .format("text")
+                                                            .format(Envs.TRANSLATE_FORMAT)
                                                             .build();
 
         
