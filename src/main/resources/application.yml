@@ -21,11 +21,11 @@ spring:
         port: ${RABBITMQ_PORT:5672}
         username: ${RABBITMQ_USERNAME:guest}
         password: ${RABBITMQ_PASSWORD:guest}
-    # cache:
-    #     type: redis
-    # redis:
-    #     host: localhost
-    #     port: 6379
+    cache:
+        type: ${CACHE_TYPE:redis}
+    redis:
+        host: ${REDIS_HOST:localhost}
+        port: ${REDIS_PORT:6379}
 
 google_translate:
     base_url: ${TRANSLATOR_URL:https://translation.googleapis.com}
@@ -36,14 +36,15 @@ queue:
     subtitle: ${RABBITMQ_QUEUE_SUBTITLE:subtitle-receive}
     exchange: ${RABBITMQ_EXCHANGE:amp.direct}
 
-# api:
-#     key: ${API_KEY:123abc}
-
-
-
 logging:
     level:
-        root: INFO
+        root: ${LOGGING_NIVEL:INFO}
         org:
             springframework:
-                web: INFO
+                web: ${LOGGING_NIVEL:INFO}
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: ${HEALTHCHECK_EXPOSURE:info, health, metrics, prometheus}

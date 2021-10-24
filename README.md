@@ -25,12 +25,26 @@ These instructions will get you a copy of the project up and running on your loc
 
 Before starting the installation, you need to install some prerequisites.
 
-##### [Java](https://www.java.com/pt-BR/)
+#### [Java](https://www.java.com/pt-BR/)
 
 Install Java.
 
 ```sh
 sudo apt install -y defalt-jre
+```
+
+##### [Redis](https://redis.io)
+
+Update local apt package.
+
+```sh
+sudo apt update
+```
+
+Install Redis.
+
+```sh
+sudo apt install redis-server
 ```
 
 ##### [MySQL](https://www.mysql.com/)
