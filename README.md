@@ -1,6 +1,10 @@
 # Video Transcription API
 
-Video Transcription API is a video transcription and translation service..
+Video Transcription API is a video transcription and translation service.
+
+<p align="center">
+  <img width="720px" src=".readme/transcription-services-simplified.png">
+</p>
 
 
 ## Table of Contents

@@ -6,7 +6,6 @@ import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
-import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -47,6 +46,8 @@ public class RabbitMQConnection {
     @PostConstruct
     private void add(){
 
+        log.info("Creating Queues...");
+
         Queue queueAudioExtract = this.queue(audioExtractQueue);
         Queue queueSubtitleReceive = this.queue(subtitleQueue);
 
@@ -55,11 +56,14 @@ public class RabbitMQConnection {
         Binding bindingAudioExtract = this.relationship(queueAudioExtract, exchange);
         Binding bindingSubtitleReceive = this.relationship(queueSubtitleReceive, exchange);
 
-            this.amqpAdmin.declareQueue(queueAudioExtract);
-            this.amqpAdmin.declareQueue(queueSubtitleReceive);
-            this.amqpAdmin.declareExchange(exchange);
-            this.amqpAdmin.declareBinding(bindingAudioExtract);
-            this.amqpAdmin.declareBinding(bindingSubtitleReceive);
+        this.amqpAdmin.declareQueue(queueAudioExtract);
+        this.amqpAdmin.declareQueue(queueSubtitleReceive);
+        this.amqpAdmin.declareExchange(exchange);
+        this.amqpAdmin.declareBinding(bindingAudioExtract);
+        this.amqpAdmin.declareBinding(bindingSubtitleReceive);
+
+        log.info("Queues created!");
+
 
 
 
