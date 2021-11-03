@@ -34,25 +34,17 @@ public class TranscriptionController {
 	@PostMapping("/")
 	public ResponseEntity<UUID> handleFileUpload(@ParameterObject @RequestParam("file") MultipartFile file) {
 
-		try {
-
-			storageService.store(file);
-			AudioForTranscriptionDTO message = transcriptionService.processToTranscription(file.getOriginalFilename());
-			sendMessage.messageSender(message);
-			
-			storageService.deleteOne(file.getOriginalFilename());
-			storageService.deleteOne(message.videoId+"."+Envs.AUDIO_EXT);
+		storageService.store(file);			
+		
+		AudioForTranscriptionDTO message = transcriptionService.processToTranscription(file.getOriginalFilename());
+		sendMessage.messageSender(message);
+		
+		storageService.deleteOne(file.getOriginalFilename());
+		storageService.deleteOne(message.videoId+"."+Envs.AUDIO_EXT);
 	
-			return new ResponseEntity<>(message.getVideoId(), HttpStatus.CREATED);
-		
-		} catch (Exception e) {
-		
-			throw new BadRequestException(ExceptionsMessage.FILE_PROCESSING_FAILED);
-		
-		}
-       
+		return new ResponseEntity<>(message.getVideoId(), HttpStatus.CREATED);
 	}
-
+	
 	@ExceptionHandler(StorageFileNotFoundException.class)
 	public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
 		return ResponseEntity.notFound().build();

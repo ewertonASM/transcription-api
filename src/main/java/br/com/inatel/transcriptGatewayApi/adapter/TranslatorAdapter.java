@@ -25,13 +25,16 @@ public class TranslatorAdapter {
 
         try {
 
-            log.debug("Translating snippet subtitle");
+            
+            log.info("Translating snippet subtitle:");
+            log.debug("Translating snippet subtitle:", translateDTO);
             
             String translatorUrl = baseUrl + "/language/translate/v2?key=" + apiKey;
     
             return new RestTemplate().postForObject(translatorUrl, translateDTO, TranslateResponseDTO.class);
             
         } catch (Exception e) {
+            log.error(ExceptionsMessage.TRANSLATION_FAIL);
             throw new BadRequestException(ExceptionsMessage.TRANSLATION_FAIL);
         }
 

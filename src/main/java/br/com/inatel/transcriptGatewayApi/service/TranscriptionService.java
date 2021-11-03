@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.inatel.transcriptGatewayApi.dto.AudioForTranscriptionDTO;
 import br.com.inatel.transcriptGatewayApi.envs.Envs;
+import br.com.inatel.transcriptGatewayApi.exception.BadRequestException;
+import br.com.inatel.transcriptGatewayApi.handler.ExceptionsMessage;
 import lombok.extern.log4j.Log4j2;
 import ws.schild.jave.Encoder;
 import ws.schild.jave.MultimediaObject;
@@ -48,11 +50,13 @@ public class TranscriptionService {
             log.info("Audio sent for processing!");
                                                                     
         } catch (Exception ex) {                                      
-            ex.printStackTrace();                                                                             
+            log.error(ExceptionsMessage.AUDIO_EXTRACTION_FAIL);
+            throw new BadRequestException(ExceptionsMessage.AUDIO_EXTRACTION_FAIL);                                                                         
         }
 
 
         Path path = Paths.get(Envs.TEMP_DIR+videoId+"."+Envs.AUDIO_EXT);
+        
         try {
 
             byte[] data = Files.readAllBytes(path);
@@ -62,10 +66,9 @@ public class TranscriptionService {
             return message;
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(ExceptionsMessage.FILE_PROCESSING_FAILED);
+            throw new BadRequestException(ExceptionsMessage.FILE_PROCESSING_FAILED);
         }
-
-        return null;
 
     }
     

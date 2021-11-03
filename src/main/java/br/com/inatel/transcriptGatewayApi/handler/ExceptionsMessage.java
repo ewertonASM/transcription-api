@@ -11,9 +11,11 @@ public class ExceptionsMessage {
 
     // Transciption Exceptions
     public static final String TRANSCRIPTION_FAIL = "The video could not be translated.";
+    public static final String AUDIO_EXTRACTION_FAIL = "The video could not have the audio extracted.";
 
     //Files Management Exceptions
     public static final String FILE_PROCESSING_FAILED = "The file could not be processed.";
+    // public static final String FILE_PROCESSING_FAILED = "The file could not be processed.";
 
 
 

@@ -10,8 +10,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 import br.com.inatel.transcriptGatewayApi.properties.StorageProperties;
 import br.com.inatel.transcriptGatewayApi.service.StorageService;
+import lombok.extern.log4j.Log4j2;
 
-// @Log4j2
+@Log4j2
 @EnableAsync
 @EnableCaching
 @SpringBootApplication
@@ -26,6 +27,9 @@ public class TranscriptionApplication {
 
 	@Bean
 	CommandLineRunner init(StorageService storageService) {
+
+		log.debug("cleaning temp files");
+		
 		return (args) -> {
 			storageService.deleteAll();
 			storageService.init();

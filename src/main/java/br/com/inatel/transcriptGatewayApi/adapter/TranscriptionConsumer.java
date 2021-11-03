@@ -3,14 +3,11 @@ package br.com.inatel.transcriptGatewayApi.adapter;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 import br.com.inatel.transcriptGatewayApi.dto.SnippetSubtitleDTO;
 import br.com.inatel.transcriptGatewayApi.envs.Envs;
-import br.com.inatel.transcriptGatewayApi.exception.BadRequestException;
 import br.com.inatel.transcriptGatewayApi.handler.ExceptionsMessage;
 import br.com.inatel.transcriptGatewayApi.mapper.SnippetSubtitleMapper;
 import br.com.inatel.transcriptGatewayApi.repository.SnippetSubtitleRepository;
@@ -32,6 +29,7 @@ public class TranscriptionConsumer {
 
         try {
             log.info("Saving subtitle...");
+            log.debug("Saving subtitle...", snippetSubtitleDTO);
             snippetSubtitleRepository.save(SnippetSubtitleMapper.INSTANCE.toSnippetSubtitle(snippetSubtitleDTO));
             
         } catch (Exception e) {

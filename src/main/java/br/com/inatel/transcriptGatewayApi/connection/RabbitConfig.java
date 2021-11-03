@@ -31,14 +31,11 @@ public class RabbitConfig {
 
     @Bean
     public Jackson2JsonMessageConverter producerJackson2MessageConverter() {
+
         try {
-
             return new Jackson2JsonMessageConverter();
-
         } catch (Exception e) {
-
             throw new BadRequestException(ExceptionsMessage.RABBIT_SETUP_FAIL);
-        
         }
     }
     
