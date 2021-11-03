@@ -15,9 +15,20 @@ public class ExceptionsMessage {
 
     //Files Management Exceptions
     public static final String FILE_PROCESSING_FAILED = "The file could not be processed.";
+    public static final String FILE_EMPTY_ERROR = "Failed to store empty file.";
+    public static final String FILE_STORAGE_OUTSIDE_ERROR = "Cannot store file outside current directory.";
+    public static final String FILE_STORAGE_ERROR = "Failed to store file.";
+    public static final String FILE_READ_ERROR = "Failed to read stored files";
+    public static final String FILE_DELETE_ERROR = "Could not initialize storage";
+    public static final String STORAGE_INITIALIZE_ERROR = "Could not initialize storage";
     // public static final String FILE_PROCESSING_FAILED = "The file could not be processed.";
 
-
+    
 
     
+
+    
+
+    
+
 }

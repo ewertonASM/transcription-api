@@ -19,6 +19,7 @@ import br.com.inatel.transcriptGatewayApi.exception.BadRequestException;
 import br.com.inatel.transcriptGatewayApi.exception.BadRequestExceptionDetails;
 import br.com.inatel.transcriptGatewayApi.exception.ExceptionDetails;
 import br.com.inatel.transcriptGatewayApi.exception.ValidationExceptionDetails;
+
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 

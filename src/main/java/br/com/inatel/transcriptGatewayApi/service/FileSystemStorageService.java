@@ -18,8 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import br.com.inatel.transcriptGatewayApi.exception.StorageException;
 import br.com.inatel.transcriptGatewayApi.exception.StorageFileNotFoundException;
+import br.com.inatel.transcriptGatewayApi.handler.ExceptionsMessage;
 import br.com.inatel.transcriptGatewayApi.properties.StorageProperties;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Service
 public class FileSystemStorageService implements StorageService {
 
@@ -34,15 +37,16 @@ public class FileSystemStorageService implements StorageService {
 	public void store(MultipartFile file) {
 		try {
 			if (file.isEmpty()) {
-				throw new StorageException("Failed to store empty file.");
+				log.error(ExceptionsMessage.FILE_EMPTY_ERROR);
+				throw new StorageException(ExceptionsMessage.FILE_EMPTY_ERROR);
 			}
 			Path destinationFile = this.rootLocation.resolve(
 					Paths.get(file.getOriginalFilename()))
 					.normalize().toAbsolutePath();
 			if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
 				// This is a security check
-				throw new StorageException(
-						"Cannot store file outside current directory.");
+				log.error(ExceptionsMessage.FILE_STORAGE_OUTSIDE_ERROR);
+				throw new StorageException(ExceptionsMessage.FILE_STORAGE_OUTSIDE_ERROR);
 			}
 			try (InputStream inputStream = file.getInputStream()) {
 				Files.copy(inputStream, destinationFile,
@@ -50,7 +54,8 @@ public class FileSystemStorageService implements StorageService {
 			}
 		}
 		catch (IOException e) {
-			throw new StorageException("Failed to store file.", e);
+			log.error(ExceptionsMessage.FILE_STORAGE_OUTSIDE_ERROR, e);
+			throw new StorageException(ExceptionsMessage.FILE_STORAGE_ERROR);
 		}
 	}
 
@@ -62,7 +67,8 @@ public class FileSystemStorageService implements StorageService {
 				.map(this.rootLocation::relativize);
 		}
 		catch (IOException e) {
-			throw new StorageException("Failed to read stored files", e);
+			log.error(ExceptionsMessage.FILE_READ_ERROR, e);
+			throw new StorageException(ExceptionsMessage.FILE_READ_ERROR);
 		}
 
 	}
@@ -81,28 +87,40 @@ public class FileSystemStorageService implements StorageService {
 				return resource;
 			}
 			else {
+			log.error(ExceptionsMessage.FILE_READ_ERROR);
 				throw new StorageFileNotFoundException(
-						"Could not read file: " + filename);
+					ExceptionsMessage.FILE_READ_ERROR + filename);
 
 			}
 		}
 		catch (MalformedURLException e) {
-			throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+			log.error(ExceptionsMessage.FILE_READ_ERROR, e);
+			throw new StorageFileNotFoundException(ExceptionsMessage.FILE_READ_ERROR + filename);
 		}
 	}
 
 	@Override
 	public void deleteAll() {
-		FileSystemUtils.deleteRecursively(rootLocation.toFile());
+		try {
+			FileSystemUtils.deleteRecursively(rootLocation.toFile());
+			
+		} catch (Exception e) {
+			log.error(ExceptionsMessage.FILE_DELETE_ERROR, e);
+			throw new StorageFileNotFoundException(ExceptionsMessage.FILE_DELETE_ERROR);
+		}
 	}
 
 	@Override
 	public void deleteOne(String filename) {
 
-		Path toDelete = Paths.get(rootLocation.toFile().getName(), filename);
-
-		toDelete.toFile().delete();
-
+		try {
+			Path toDelete = Paths.get(rootLocation.toFile().getName(), filename);
+			toDelete.toFile().delete();
+			
+		} catch (Exception e) {
+			log.error(ExceptionsMessage.FILE_DELETE_ERROR, e);
+			throw new StorageFileNotFoundException(ExceptionsMessage.FILE_DELETE_ERROR + filename);
+		}
 		
 	}
 
@@ -112,7 +130,8 @@ public class FileSystemStorageService implements StorageService {
 			Files.createDirectories(rootLocation);
 		}
 		catch (IOException e) {
-			throw new StorageException("Could not initialize storage", e);
+			log.error(ExceptionsMessage.STORAGE_INITIALIZE_ERROR);
+			throw new StorageException(ExceptionsMessage.STORAGE_INITIALIZE_ERROR, e);
 		}
 	}
 }

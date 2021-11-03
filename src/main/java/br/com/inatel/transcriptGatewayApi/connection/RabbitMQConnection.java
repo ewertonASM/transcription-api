@@ -48,7 +48,7 @@ public class RabbitMQConnection {
     @PostConstruct
     private void add(){
 
-        log.info("Creating Queues...");
+        log.debug("Creating Queues...", audioExtractQueue, subtitleQueue);
 
         try {
 
@@ -67,9 +67,10 @@ public class RabbitMQConnection {
             this.amqpAdmin.declareBinding(bindingSubtitleReceive);
             
         } catch (Exception e) {
+            log.error(ExceptionsMessage.RABBIT_SETUP_FAIL);
             throw new BadRequestException(ExceptionsMessage.RABBIT_SETUP_FAIL);
         }
-        log.info("Queues created!");
+        log.debug("Queues created!");
     }
     
 }

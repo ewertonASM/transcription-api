@@ -13,14 +13,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import br.com.inatel.transcriptGatewayApi.dto.AudioForTranscriptionDTO;
 import br.com.inatel.transcriptGatewayApi.envs.Envs;
-import br.com.inatel.transcriptGatewayApi.exception.BadRequestException;
 import br.com.inatel.transcriptGatewayApi.exception.StorageFileNotFoundException;
-import br.com.inatel.transcriptGatewayApi.handler.ExceptionsMessage;
 import br.com.inatel.transcriptGatewayApi.service.SendMessageService;
 import br.com.inatel.transcriptGatewayApi.service.StorageService;
 import br.com.inatel.transcriptGatewayApi.service.TranscriptionService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @RestController
 @RequiredArgsConstructor
 public class TranscriptionController {
@@ -34,13 +34,18 @@ public class TranscriptionController {
 	@PostMapping("/")
 	public ResponseEntity<UUID> handleFileUpload(@ParameterObject @RequestParam("file") MultipartFile file) {
 
-		storageService.store(file);			
+		log.debug("Storing file...", file);
+		storageService.store(file);		
+		log.debug("Stored file.", file);
+
 		
 		AudioForTranscriptionDTO message = transcriptionService.processToTranscription(file.getOriginalFilename());
 		sendMessage.messageSender(message);
 		
+		log.debug("Deleting temp files...", file.getOriginalFilename(), message.videoId+"."+Envs.AUDIO_EXT);
 		storageService.deleteOne(file.getOriginalFilename());
 		storageService.deleteOne(message.videoId+"."+Envs.AUDIO_EXT);
+		log.debug("Files deleted!");
 	
 		return new ResponseEntity<>(message.getVideoId(), HttpStatus.CREATED);
 	}
