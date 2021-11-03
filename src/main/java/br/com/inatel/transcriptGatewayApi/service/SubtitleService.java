@@ -48,7 +48,6 @@ public class SubtitleService {
         if(snippets.isEmpty()){
             throw new BadRequestException("subtitle not found!");
         }
-
         if(snippets.size()+1 != Integer.parseInt(snippets.get(0).getSnippet().split("/")[1])){
             throw new BadRequestException("subtitle in processing, try again later");
         }

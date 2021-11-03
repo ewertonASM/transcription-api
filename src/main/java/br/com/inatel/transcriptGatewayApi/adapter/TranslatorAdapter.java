@@ -6,6 +6,8 @@ import org.springframework.web.client.RestTemplate;
 
 import br.com.inatel.transcriptGatewayApi.dto.TranslateRequestDTO;
 import br.com.inatel.transcriptGatewayApi.dto.TranslateResponseDTO;
+import br.com.inatel.transcriptGatewayApi.exception.BadRequestException;
+import br.com.inatel.transcriptGatewayApi.handler.ExceptionsMessage;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -21,11 +23,18 @@ public class TranslatorAdapter {
     // @Cacheable(cacheNames = "Company", key="#identifier")
     public TranslateResponseDTO translateText(TranslateRequestDTO translateDTO){
 
-        log.debug("Translating snippet subtitle");
-        
-        String translatorUrl = baseUrl + "/language/translate/v2?key=" + apiKey;
+        try {
 
-        return new RestTemplate().postForObject(translatorUrl, translateDTO, TranslateResponseDTO.class);
+            log.debug("Translating snippet subtitle");
+            
+            String translatorUrl = baseUrl + "/language/translate/v2?key=" + apiKey;
+    
+            return new RestTemplate().postForObject(translatorUrl, translateDTO, TranslateResponseDTO.class);
+            
+        } catch (Exception e) {
+            throw new BadRequestException(ExceptionsMessage.TRANSLATION_FAIL);
+        }
+
         
     }
 

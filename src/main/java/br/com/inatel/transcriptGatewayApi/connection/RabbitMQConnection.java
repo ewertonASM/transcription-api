@@ -9,6 +9,8 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import br.com.inatel.transcriptGatewayApi.exception.BadRequestException;
+import br.com.inatel.transcriptGatewayApi.handler.ExceptionsMessage;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -48,25 +50,26 @@ public class RabbitMQConnection {
 
         log.info("Creating Queues...");
 
-        Queue queueAudioExtract = this.queue(audioExtractQueue);
-        Queue queueSubtitleReceive = this.queue(subtitleQueue);
+        try {
 
-        DirectExchange exchange = this.directExchange();
-
-        Binding bindingAudioExtract = this.relationship(queueAudioExtract, exchange);
-        Binding bindingSubtitleReceive = this.relationship(queueSubtitleReceive, exchange);
-
-        this.amqpAdmin.declareQueue(queueAudioExtract);
-        this.amqpAdmin.declareQueue(queueSubtitleReceive);
-        this.amqpAdmin.declareExchange(exchange);
-        this.amqpAdmin.declareBinding(bindingAudioExtract);
-        this.amqpAdmin.declareBinding(bindingSubtitleReceive);
-
+            Queue queueAudioExtract = this.queue(audioExtractQueue);
+            Queue queueSubtitleReceive = this.queue(subtitleQueue);
+    
+            DirectExchange exchange = this.directExchange();
+    
+            Binding bindingAudioExtract = this.relationship(queueAudioExtract, exchange);
+            Binding bindingSubtitleReceive = this.relationship(queueSubtitleReceive, exchange);
+    
+            this.amqpAdmin.declareQueue(queueAudioExtract);
+            this.amqpAdmin.declareQueue(queueSubtitleReceive);
+            this.amqpAdmin.declareExchange(exchange);
+            this.amqpAdmin.declareBinding(bindingAudioExtract);
+            this.amqpAdmin.declareBinding(bindingSubtitleReceive);
+            
+        } catch (Exception e) {
+            throw new BadRequestException(ExceptionsMessage.RABBIT_SETUP_FAIL);
+        }
         log.info("Queues created!");
-
-
-
-
     }
     
 }
