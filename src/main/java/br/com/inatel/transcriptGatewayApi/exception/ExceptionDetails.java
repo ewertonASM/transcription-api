@@ -12,7 +12,7 @@ public class ExceptionDetails {
     protected String title;
     protected int status;
     protected String details;
-    protected String developerMessage;
+    // protected String developerMessage;
     protected LocalDateTime timestamp;
     
 }

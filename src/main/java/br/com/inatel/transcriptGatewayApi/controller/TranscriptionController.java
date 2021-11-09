@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.inatel.transcriptGatewayApi.dto.AudioForTranscriptionDTO;
+import br.com.inatel.transcriptGatewayApi.dto.VideoIdDTO;
 import br.com.inatel.transcriptGatewayApi.envs.Envs;
 import br.com.inatel.transcriptGatewayApi.exception.StorageFileNotFoundException;
 import br.com.inatel.transcriptGatewayApi.service.SendMessageService;
@@ -32,22 +33,22 @@ public class TranscriptionController {
 	private final TranscriptionService transcriptionService;
 
 	@PostMapping("/")
-	public ResponseEntity<UUID> handleFileUpload(@ParameterObject @RequestParam("file") MultipartFile file) {
+	public ResponseEntity<VideoIdDTO> handleFileUpload(@ParameterObject @RequestParam("file") MultipartFile file) {
 
 		log.debug("Storing file...", file);
 		storageService.store(file);		
 		log.debug("Stored file.", file);
-
 		
 		AudioForTranscriptionDTO message = transcriptionService.processToTranscription(file.getOriginalFilename());
 		sendMessage.messageSender(message);
+
 		
 		log.debug("Deleting temp files...", file.getOriginalFilename(), message.videoId+"."+Envs.AUDIO_EXT);
 		storageService.deleteOne(file.getOriginalFilename());
 		storageService.deleteOne(message.videoId+"."+Envs.AUDIO_EXT);
 		log.debug("Files deleted!");
 	
-		return new ResponseEntity<>(message.getVideoId(), HttpStatus.CREATED);
+		return new ResponseEntity<>(VideoIdDTO.builder().videoId(message.getVideoId()).build(), HttpStatus.CREATED);
 	}
 	
 	@ExceptionHandler(StorageFileNotFoundException.class)

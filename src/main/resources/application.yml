@@ -8,14 +8,22 @@ spring:
         url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/subtitledb?&createDatabaseIfNotExist=true}
         username: ${SPRING_DATASOURCE_USERNAME:root}
         password: ${SPRING_DATASOURCE_PASSWORD:root}
+        tomcat:
+            validation-query: SELECT 1
+            test-on-borrow: true
+            validation-interval: 3000 # 30s
     jpa:
         hibernate:
             ddl-auto: update   
 
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+
     servlet:
         multipart:
-            max-file-size:  ${MAX_FILE_SIZE:15MB}
-            max-request-size:  ${MAX_REQUEST_SIZE:15MB}
+            max-file-size:  ${MAX_FILE_SIZE:50MB}
+            max-request-size:  ${MAX_REQUEST_SIZE:50MB}
     rabbitmq:
         host: ${RABBITMQ_HOST:localhost}
         port: ${RABBITMQ_PORT:5672}
@@ -26,6 +34,8 @@ spring:
     redis:
         host: ${REDIS_HOST:localhost}
         port: ${REDIS_PORT:6379}
+    
+            
 
 google_translate:
     base_url: ${TRANSLATOR_URL:https://translation.googleapis.com}

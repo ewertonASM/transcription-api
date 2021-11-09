@@ -23,6 +23,7 @@ import br.com.inatel.transcriptGatewayApi.dto.TranslateRequestDTO;
 import br.com.inatel.transcriptGatewayApi.dto.TranslateResponseDTO;
 import br.com.inatel.transcriptGatewayApi.envs.Envs;
 import br.com.inatel.transcriptGatewayApi.exception.BadRequestException;
+import br.com.inatel.transcriptGatewayApi.handler.ExceptionsMessage;
 import br.com.inatel.transcriptGatewayApi.model.SnippetSubtitle;
 import br.com.inatel.transcriptGatewayApi.repository.SnippetSubtitleRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +39,7 @@ public class SubtitleService {
 
     private final SnippetSubtitleRepository snippetSubtitleRepository;
 
-    public String findSubtitle(String videoId, String language) throws IOException {
+    public String findSubtitle(String videoId, String language) {
 
         String subtitleFileName = Envs.TEMP_DIR + videoId + "." + Envs.SUBTITLE_EXT;
 
@@ -60,30 +61,37 @@ public class SubtitleService {
 
         }
 
-        FileWriter writer = new FileWriter(subtitleFileName);
+        FileWriter writer;
+        try {
 
-        List<SnippetSubtitle> snippetSubtitleForFile = language.isEmpty() ? snippets : translatedSubtitle;
-
+            writer = new FileWriter(subtitleFileName);
     
-        Collections.sort(snippetSubtitleForFile);
+            List<SnippetSubtitle> snippetSubtitleForFile = language.isEmpty() ? snippets : translatedSubtitle;
         
-        for(SnippetSubtitle snippet:snippetSubtitleForFile){
+            Collections.sort(snippetSubtitleForFile);
+            
+            for(SnippetSubtitle snippet:snippetSubtitleForFile){
+    
+                writer.write(snippet.getSnippet().split("/")[0] + System.lineSeparator());
+                writer.write(snippet.getTimeLimits() + System.lineSeparator());
+                writer.write(snippet.getText() + System.lineSeparator());
+                writer.write(System.lineSeparator());
+    
+            }
 
-            writer.write(snippet.getSnippet().split("/")[0] + System.lineSeparator());
-            writer.write(snippet.getTimeLimits() + System.lineSeparator());
-            writer.write(snippet.getText() + System.lineSeparator());
-            writer.write(System.lineSeparator());
+            writer.close();
+            return subtitleFileName;
 
+        } catch (IOException e) {
+            log.error(ExceptionsMessage.FILE_READ_ERROR);
+            throw new BadRequestException(ExceptionsMessage.FILE_READ_ERROR);
         }
 
-        writer.close();
-
-        return subtitleFileName;
 
     }
 
     public void downloadResource(HttpServletRequest request, HttpServletResponse response,
-			        String subtitleFileName) throws IOException {
+			        String subtitleFileName) {
 
 		File file = new File(subtitleFileName);
 		if (file.exists()) {
@@ -99,9 +107,13 @@ public class SubtitleService {
 
 			response.setContentLength((int) file.length());
 
-			InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
-
-			FileCopyUtils.copy(inputStream, response.getOutputStream());
+            
+			try {
+                InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+                FileCopyUtils.copy(inputStream, response.getOutputStream());
+            } catch (IOException e) {
+                log.error(ExceptionsMessage.FILE_PROCESSING_FAILED);
+            }
 
 		}
 	}

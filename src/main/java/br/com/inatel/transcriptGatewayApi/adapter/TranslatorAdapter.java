@@ -25,7 +25,6 @@ public class TranslatorAdapter {
 
         try {
 
-            
             log.info("Translating snippet subtitle:");
             log.debug("Translating snippet subtitle:", translateDTO);
             

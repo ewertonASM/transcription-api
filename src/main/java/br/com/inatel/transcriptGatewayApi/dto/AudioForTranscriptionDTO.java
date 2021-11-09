@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AudioForTranscriptionDTO implements Serializable {
 
-
     @NotEmpty(message = "The videoId cannot be empty")
     public UUID videoId;
 

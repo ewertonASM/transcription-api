@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.TypeMismatchException;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +15,15 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import br.com.inatel.transcriptGatewayApi.exception.BadRequestException;
 import br.com.inatel.transcriptGatewayApi.exception.BadRequestExceptionDetails;
 import br.com.inatel.transcriptGatewayApi.exception.ExceptionDetails;
+import br.com.inatel.transcriptGatewayApi.exception.MultipartExceptionDetails;
 import br.com.inatel.transcriptGatewayApi.exception.ValidationExceptionDetails;
+import br.com.inatel.transcriptGatewayApi.exception.MultipartExceptionDetails.MultipartExceptionDetailsBuilder;
 
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
@@ -31,7 +36,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                         .status(HttpStatus.BAD_REQUEST.value())
                         .title("Bad Request Exception, Check the Documentation")
                         .details(bre.getMessage())
-                        .developerMessage(bre.getClass().getName())
+                        // .developerMessage(bre.getClass().getName())
                         .build(), HttpStatus.BAD_REQUEST);
     }
 
@@ -49,10 +54,24 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                         .status(HttpStatus.BAD_REQUEST.value())
                         .title("Bad Request Exception, Invalid Fields")
                         .details("Check the field(s) error")
-                        .developerMessage(exception.getClass().getName())
+                        // .developerMessage(exception.getClass().getName())
                         .fields(fields)
                         .fieldsMessage(fieldsMessage)
                         .build(), HttpStatus.BAD_REQUEST);
+    }
+
+    // @Override
+    @ExceptionHandler(MultipartException.class)
+    public ResponseEntity<MultipartExceptionDetails> handleMultipartException(MultipartException bre) {
+        return new ResponseEntity<>(
+                MultipartExceptionDetails.builder()
+                        .timestamp(LocalDateTime.now())
+                        .status(HttpStatus.BAD_REQUEST.value())
+                        .title("Bad Request Exception, Check the Documentation")
+                        .details(bre.getMessage())
+                        // .developerMessage(bre.getClass().getName())
+                        .build(), HttpStatus.BAD_REQUEST);
+                        
     }
 
     @Override
@@ -64,7 +83,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .status(status.value())
                 .title(ex.getCause().getMessage())
                 .details(ex.getMessage())
-                .developerMessage(ex.getClass().getName())
+                // .developerMessage(ex.getClass().getName())
                 .build();
 
         return new ResponseEntity<>(exceptionDetails, headers, status);

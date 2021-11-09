@@ -28,6 +28,7 @@ public class TranscriptionConsumer {
     public void consumidor(SnippetSubtitleDTO snippetSubtitleDTO){
 
         try {
+            
             log.info("Saving subtitle...");
             log.debug("Saving subtitle...", snippetSubtitleDTO);
             snippetSubtitleRepository.save(SnippetSubtitleMapper.INSTANCE.toSnippetSubtitle(snippetSubtitleDTO));

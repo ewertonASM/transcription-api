@@ -1,0 +1,57 @@
+server:
+    port: 8081
+    error:
+        include-stacktrace: never
+
+spring:
+    datasource:
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+        username: sa
+        password: sa
+    jpa:
+        hibernate:
+            ddl-auto: update   
+
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+
+    servlet:
+        multipart:
+            max-file-size:  50MB
+            max-request-size:  50MB
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
+    cache:
+        type: redis
+    redis:
+        host: localhost
+        port: 6379
+    
+            
+
+google_translate:
+    base_url: https://translation.googleapis.com
+    api_key: AIzaSyCYX9soUSBUk55LBfqXpIycVWPEczgjTNk
+
+queue:
+    extract: audio-extract
+    subtitle: subtitle-receive
+    exchange: amp.direct
+
+logging:
+    level:
+        root: INFO
+        org:
+            springframework:
+                web: INFO
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: info, health, metrics, prometheus

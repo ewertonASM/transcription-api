@@ -1,7 +1,7 @@
 package br.com.inatel.transcriptGatewayApi.controller;
 
-import java.io.IOException;
 import java.util.Optional;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,13 +28,13 @@ public class SubtitleController {
 
     @GetMapping("/videos/{id}/subtitle")
 	public void findSubtitle(@ParameterObject HttpServletRequest request, HttpServletResponse response,
-                @PathVariable String id, @RequestParam(required = false) Optional<String> lang) throws IOException {
+                @PathVariable UUID id, @RequestParam(required = false) Optional<String> lang) {
 
         log.info("Downloading subtitle...");
-        
+
         String language = lang.isPresent() ? lang.get() : "";
         
-        String subtitleFileName = subtitleService.findSubtitle(id, language);
+        String subtitleFileName = subtitleService.findSubtitle(id.toString(), language);
         
         log.debug(subtitleFileName);
 
