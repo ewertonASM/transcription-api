@@ -5,20 +5,20 @@ server:
 
 spring:
     datasource:
-        url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/subtitledb?&createDatabaseIfNotExist=true}
+        url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/bootdb?&createDatabaseIfNotExist=true}
         username: ${SPRING_DATASOURCE_USERNAME:root}
         password: ${SPRING_DATASOURCE_PASSWORD:root}
-        tomcat:
-            validation-query: SELECT 1
-            test-on-borrow: true
-            validation-interval: 3000 # 30s
+        # tomcat:
+        #     validation-query: SELECT 1
+        #     test-on-borrow: true
+        #     validation-interval: 3000 # 30s
     jpa:
         hibernate:
             ddl-auto: update   
 
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.MySQL5Dialect
+        # properties:
+        #     hibernate:
+        #         dialect: org.hibernate.dialect.MySQL5Dialect
 
     servlet:
         multipart:

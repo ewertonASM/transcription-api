@@ -1,0 +1,24 @@
+07:42:56.069 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:42:56.276 request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 141607
+1 > Content-Type: multipart/form-data; boundary=pEbUHjBO_UEgttzjslLcW-Jo-n1Wxoj
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:42:56.313 response time in milliseconds: 35.06
+1 < 400
+1 < Connection: close
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:42:56 GMT
+1 < Transfer-Encoding: chunked
+{"title":"Bad Request Exception, Check the Documentation","status":400,"details":"The file does not have a compatible format.","timestamp":"2021-11-11T07:42:56.306491"}
+
+75"}
+
+
+}
+
+07:26:39.828 status code was: 400, expected: 201, response time: 285, url: http://localhost:8081/, response: {"title":"Bad Request Exception, Check the Documentation","status":400,"details":"The file does not have a compatible format.","timestamp":"2021-11-11T07:26:39.778125"}

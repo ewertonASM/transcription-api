@@ -1,0 +1,11 @@
+<testsuite failures="0" name="testinho/SendValidFilePOST.feature" skipped="0" tests="1" time="0.34796">
+  <testcase classname="testinho.SendValidFilePOST" name="upload file" time="0.34796">
+    <system-out>* url "http://localhost:8081" ............................................. passed
+* configure lowerCaseResponseHeaders = true ............................... passed
+Given path '/' ............................................................ passed
+And header Content-Type = 'multipart/form-data' ........................... passed
+And multipart file file =  { read: '../data/micro.mp4', filename: 'micro.mp4', contentType: 'video/mp4' } . passed
+When method post .......................................................... passed
+Then status 201 ........................................................... passed</system-out>
+  </testcase>
+</testsuite>

@@ -1,0 +1,11 @@
+<testsuite failures="0" name="testinho/SendInvalidFileWithValidExtensionPOST.feature" skipped="0" tests="1" time="0.232327">
+  <testcase classname="testinho.SendInvalidFileWithValidExtensionPOST" name="upload file" time="0.232327">
+    <system-out>* url "http://localhost:8081" ............................................. passed
+* configure lowerCaseResponseHeaders = true ............................... passed
+Given path '/' ............................................................ passed
+And header Content-Type = 'multipart/form-data' ........................... passed
+And multipart file file =  { read: '../data/imagem.mp4', filename: 'imagem.mp4', contentType: 'video/mp4' } . passed
+When method post .......................................................... passed
+Then status 400 ........................................................... passed</system-out>
+  </testcase>
+</testsuite>

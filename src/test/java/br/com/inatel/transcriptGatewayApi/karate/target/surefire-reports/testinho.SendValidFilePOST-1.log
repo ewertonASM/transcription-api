@@ -1,0 +1,19 @@
+07:42:56.627 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:42:56.650 request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214350
+1 > Content-Type: multipart/form-data; boundary=di1WwrNOk_HOEbIi9aPVkk50GGIqAz6bVYQM5TQm
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:42:56.976 response time in milliseconds: 324.75
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:42:56 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"a7ef4d7c-470c-4ffa-8b9a-b42502971d54"}
+

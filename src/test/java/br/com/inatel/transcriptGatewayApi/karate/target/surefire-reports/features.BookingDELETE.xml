@@ -1,0 +1,63 @@
+<testsuite failures="0" name="features/BookingDELETE.feature" skipped="0" tests="3" time="10.560121">
+  <testcase classname="features.BookingDELETE" name="Excluir um reserva com sucesso" time="7.777686">
+    <system-out>* url "https://treinamento-api.herokuapp.com" ............................. passed
+* header Content-Type = 'application/json' ................................ passed
+* header Accept = 'application/json' ...................................... passed
+* header Authorization = 'Basic YWRtaW46cGFzc3dvcmQxMjM=' ................. passed
+* def book = call read('../utils/criarReserva.feature') ................... passed
+* def bookingId = book.response.bookingid ................................. passed
+Given path 'booking', bookingId ........................................... passed
+When method DELETE ........................................................ passed
+Then status 201 ........................................................... passed</system-out>
+  </testcase>
+  <testcase classname="features.BookingDELETE" name="Tentar excluir um reserva que não existe" time="1.437125">
+    <system-out>* url "https://treinamento-api.herokuapp.com" ............................. passed
+* header Content-Type = 'application/json' ................................ passed
+* header Accept = 'application/json' ...................................... passed
+* header Authorization = 'Basic YWRtaW46cGFzc3dvcmQxMjM=' ................. passed
+* def book = call read('../utils/criarReserva.feature') ................... passed
+* def bookingId = book.response.bookingid ................................. passed
+Given path 'booking', bookingId ........................................... passed
+When method DELETE ........................................................ passed
+Then status 201 ........................................................... passed
+* url "https://treinamento-api.herokuapp.com" ............................. passed
+* header Content-Type = 'application/json' ................................ passed
+* header Accept = 'application/json' ...................................... passed
+* header Authorization = 'Basic YWRtaW46cGFzc3dvcmQxMjM=' ................. passed
+* def book = call read('../utils/criarReserva.feature') ................... passed
+* def bookingId = book.response.bookingid ................................. passed
+Given path 'booking', 3215 ................................................ passed
+When method DELETE ........................................................ passed
+Then status 405 ........................................................... passed</system-out>
+  </testcase>
+  <testcase classname="features.BookingDELETE" name="Tentar excluir uma reserva sem autorização" time="1.34531">
+    <system-out>* url "https://treinamento-api.herokuapp.com" ............................. passed
+* header Content-Type = 'application/json' ................................ passed
+* header Accept = 'application/json' ...................................... passed
+* header Authorization = 'Basic YWRtaW46cGFzc3dvcmQxMjM=' ................. passed
+* def book = call read('../utils/criarReserva.feature') ................... passed
+* def bookingId = book.response.bookingid ................................. passed
+Given path 'booking', bookingId ........................................... passed
+When method DELETE ........................................................ passed
+Then status 201 ........................................................... passed
+* url "https://treinamento-api.herokuapp.com" ............................. passed
+* header Content-Type = 'application/json' ................................ passed
+* header Accept = 'application/json' ...................................... passed
+* header Authorization = 'Basic YWRtaW46cGFzc3dvcmQxMjM=' ................. passed
+* def book = call read('../utils/criarReserva.feature') ................... passed
+* def bookingId = book.response.bookingid ................................. passed
+Given path 'booking', 3215 ................................................ passed
+When method DELETE ........................................................ passed
+Then status 405 ........................................................... passed
+* url "https://treinamento-api.herokuapp.com" ............................. passed
+* header Content-Type = 'application/json' ................................ passed
+* header Accept = 'application/json' ...................................... passed
+* header Authorization = 'Basic YWRtaW46cGFzc3dvcmQxMjM=' ................. passed
+* def book = call read('../utils/criarReserva.feature') ................... passed
+* def bookingId = book.response.bookingid ................................. passed
+Given path 'booking', bookingId ........................................... passed
+And header Authorization = 'Basic tokenInvalido' .......................... passed
+When method DELETE ........................................................ passed
+Then status 403 ........................................................... passed</system-out>
+  </testcase>
+</testsuite>

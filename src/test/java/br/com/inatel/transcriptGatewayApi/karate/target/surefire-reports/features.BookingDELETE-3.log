@@ -1,0 +1,23 @@
+07:29:24.000 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:24.707 request:
+1 > DELETE https://treinamento-api.herokuapp.com/booking/13
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Authorization: Basic tokenInvalido
+1 > Connection: Keep-Alive
+1 > Content-Type: application/json
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:29:25.356 response time in milliseconds: 647.66
+1 < 403
+1 < Connection: keep-alive
+1 < Content-Length: 9
+1 < Content-Type: text/plain; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:18 GMT
+1 < Etag: W/"9-PatfYBLj4Um1qTm5zrukoLhNyPU"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+Forbidden
+

@@ -3,6 +3,7 @@ package br.com.inatel.transcriptGatewayApi.service;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +15,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
@@ -90,35 +95,26 @@ public class SubtitleService {
 
     }
 
-    public void downloadResource(HttpServletRequest request, HttpServletResponse response,
-			        String subtitleFileName) {
+    public ResponseEntity<InputStreamResource> downloadResource(String subtitleFileName) {
 
-		File file = new File(subtitleFileName);
-		if (file.exists()) {
+        File file = new File(subtitleFileName);
 
-			String mimeType = URLConnection.guessContentTypeFromName(file.getName());
-			if (mimeType == null) {
-				mimeType = "application/octet-stream";
-			}
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
 
-			response.setContentType(mimeType);
+            InputStreamResource resource;
+                try {
+                    resource = new InputStreamResource(new FileInputStream(file));
+                    return ResponseEntity.ok()
+                            .headers(headers)
+                            .contentLength(file.length())
+                            .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                            .body(resource);
+                } catch (FileNotFoundException e) {
+                    throw new BadRequestException(e.getMessage());
+                }
+    }
 
-			response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
-
-			response.setContentLength((int) file.length());
-
-            
-			try {
-                InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
-                FileCopyUtils.copy(inputStream, response.getOutputStream());
-            } catch (IOException e) {
-                log.error(ExceptionsMessage.FILE_PROCESSING_FAILED);
-            }
-
-		}
-	}
-
-    // @Async
     private List<SnippetSubtitle> translate(List<SnippetSubtitle> snippets, String language){
 
         List<SnippetSubtitle> translatedSubtitle = new LinkedList<>();

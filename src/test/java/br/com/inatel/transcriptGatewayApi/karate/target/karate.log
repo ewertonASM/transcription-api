@@ -1,0 +1,830 @@
+22:41:44.068 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+22:41:44.779 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+22:41:45.141 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST https://treinamento-api.herokuapp.com/booking
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 168
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+22:41:52.450 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 7303.17
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 195
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 01:41:47 GMT
+1 < Etag: W/"c3-mr+ToVU3dK7bNqxVpsnhD1SC7cM"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"bookingid":11,"booking":{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}}
+
+22:41:52.490 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > DELETE https://treinamento-api.herokuapp.com/booking/11
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=
+1 > Connection: Keep-Alive
+1 > Content-Type: application/json
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+22:41:53.312 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 819.62
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Length: 7
+1 < Content-Type: text/plain; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 01:41:48 GMT
+1 < Etag: W/"7-rM9AyJuqT6iOan/xHh+AW+7K/T8"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+Created
+
+22:41:53.325 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+22:41:53.341 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST https://treinamento-api.herokuapp.com/booking
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 168
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+22:41:54.332 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 990.58
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 195
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 01:41:49 GMT
+1 < Etag: W/"c3-Hgn0HOW7t3wbXoNXHOll0aSCOGo"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"bookingid":12,"booking":{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}}
+
+22:41:54.348 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > DELETE https://treinamento-api.herokuapp.com/booking/3215
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=
+1 > Connection: Keep-Alive
+1 > Content-Type: application/json
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+22:41:55.104 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 755.73
+1 < 405
+1 < Connection: keep-alive
+1 < Content-Length: 18
+1 < Content-Type: text/plain; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 01:41:50 GMT
+1 < Etag: W/"12-UGJMK66P4abaBlq0vKHJaCKuGCA"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+Method Not Allowed
+
+22:41:55.113 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+22:41:55.125 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST https://treinamento-api.herokuapp.com/booking
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 168
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+22:41:55.955 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 829.09
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 195
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 01:41:50 GMT
+1 < Etag: W/"c3-SIrSqXzFCWI4yhlnSZi17vIdi4o"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"bookingid":13,"booking":{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}}
+
+22:41:55.969 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > DELETE https://treinamento-api.herokuapp.com/booking/13
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Authorization: Basic tokenInvalido
+1 > Connection: Keep-Alive
+1 > Content-Type: application/json
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+22:41:56.815 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 845.62
+1 < 403
+1 < Connection: keep-alive
+1 < Content-Length: 9
+1 < Content-Type: text/plain; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 01:41:51 GMT
+1 < Etag: W/"9-PatfYBLj4Um1qTm5zrukoLhNyPU"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+Forbidden
+
+22:43:39.262 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+22:43:39.851 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+22:43:39.972 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 1 of 1: testinho/BookingPOST.feature
+22:43:56.710 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+22:43:57.292 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+22:43:57.566 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214348
+1 > Content-Type: multipart/form-data; boundary=B_I3823igkypS4BNRfr6jH-hXY8EPGAce9Mq3gZ
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+22:43:58.668 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 1100.05
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 01:43:58 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+"6c4ef4e1-c26f-4d0e-b715-16b509cf4615"
+
+22:43:58.744 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 1 of 1: testinho/BookingPOST.feature
+22:45:43.673 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+22:45:44.328 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+22:45:44.632 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214348
+1 > Content-Type: multipart/form-data; boundary=5QIbHfGK1K39TvpH5GBxN4E5eBGqEP1XK9Xppws
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+22:45:45.274 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 638.85
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 01:45:45 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+"7e65d3b6-fdf6-4174-bd81-36d9799bedab"
+
+22:45:45.348 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 1 of 1: testinho/BookingPOST.feature
+07:26:38.838 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+07:26:39.320 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:26:39.539 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 141625
+1 > Content-Type: multipart/form-data; boundary=r-ofr_qqrP-L4EwcOLJxNOHmBDFvqH3cnvBEp77b
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:26:39.827 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 285.22
+1 < 400
+1 < Connection: close
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:26:39 GMT
+1 < Transfer-Encoding: chunked
+{"title":"Bad Request Exception, Check the Documentation","status":400,"details":"The file does not have a compatible format.","timestamp":"2021-11-11T07:26:39.778125"}
+
+07:26:39.828 [ForkJoinPool-1-worker-3] ERROR com.intuit.karate - status code was: 400, expected: 201, response time: 285, url: http://localhost:8081/, response: {"title":"Bad Request Exception, Check the Documentation","status":400,"details":"The file does not have a compatible format.","timestamp":"2021-11-11T07:26:39.778125"}
+07:26:39.885 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 1 of 4: testinho/SendInvalidFileWithValidExtensionPOST.feature
+07:26:39.903 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:26:39.976 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214354
+1 > Content-Type: multipart/form-data; boundary=lKbNCCuhnN0LjLIzki1w99-R3mZ30ENE502slOV
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:26:40.346 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 367.99
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:26:39 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"60b348c4-e9a3-45a9-ae40-53bdfd5debe5"}
+
+07:26:40.350 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 2 of 4: testinho/SendFileWithWrongContentTypePOST.feature
+07:26:40.364 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:26:40.369 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 3 of 4: testinho/SendValidFilePOST.feature
+07:26:40.382 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:26:40.418 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214340
+1 > Content-Type: multipart/form-data; boundary=j9tkN1aV-8ta2zNMp6o_MgBIz2OfQ2C14fI
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:26:40.749 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 329.71
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:26:39 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"a8c76ece-1023-4628-b8c9-d8ca3b623bda"}
+
+07:26:40.752 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 4 of 4: testinho/SendInvalidTypeFilePost.feature
+07:28:23.518 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+07:28:24.034 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:28:24.307 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 141621
+1 > Content-Type: multipart/form-data; boundary=lQl8yd-18SeSWV0yymxqGSvk_7zLp-W_QpJcXU
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:28:24.361 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 51.69
+1 < 400
+1 < Connection: close
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:28:24 GMT
+1 < Transfer-Encoding: chunked
+{"title":"Bad Request Exception, Check the Documentation","status":400,"details":"The file does not have a compatible format.","timestamp":"2021-11-11T07:28:24.354121"}
+
+07:28:24.437 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 1 of 4: testinho/SendInvalidFileWithValidExtensionPOST.feature
+07:28:24.451 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:28:24.490 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214346
+1 > Content-Type: multipart/form-data; boundary=bRgN2ZIg9wWNosIawi0_Wq78Ns019pAmfm4
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:28:24.835 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 344.15
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:28:24 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"fd0a1c6b-a2e2-469c-974b-81b82f7880ef"}
+
+07:28:24.835 [ForkJoinPool-1-worker-3] ERROR com.intuit.karate - status code was: 201, expected: 400, response time: 344, url: http://localhost:8081/, response: {"videoId":"fd0a1c6b-a2e2-469c-974b-81b82f7880ef"}
+07:28:24.840 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 2 of 4: testinho/SendFileWithWrongContentTypePOST.feature
+07:28:24.853 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:28:24.859 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 3 of 4: testinho/SendValidFilePOST.feature
+07:28:24.873 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:28:24.914 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214350
+1 > Content-Type: multipart/form-data; boundary=BTiOTyyE8Ts8nB9dsmdVI_KbigssG6BT3vU-Lz1t
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:28:25.254 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 337.57
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:28:24 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"f3a26c79-3fbe-44d4-a6c6-02a9bdc75359"}
+
+07:28:25.255 [ForkJoinPool-1-worker-3] ERROR com.intuit.karate - status code was: 201, expected: 400, response time: 338, url: http://localhost:8081/, response: {"videoId":"f3a26c79-3fbe-44d4-a6c6-02a9bdc75359"}
+07:28:25.258 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 4 of 4: testinho/SendInvalidTypeFilePost.feature
+07:29:14.320 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+07:29:14.751 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:14.980 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST https://treinamento-api.herokuapp.com/booking
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 168
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+07:29:21.808 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 6825.43
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 195
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:15 GMT
+1 < Etag: W/"c3-mr+ToVU3dK7bNqxVpsnhD1SC7cM"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"bookingid":11,"booking":{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}}
+
+07:29:21.840 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > DELETE https://treinamento-api.herokuapp.com/booking/11
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=
+1 > Connection: Keep-Alive
+1 > Content-Type: application/json
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:29:22.540 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 699.79
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Length: 7
+1 < Content-Type: text/plain; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:15 GMT
+1 < Etag: W/"7-rM9AyJuqT6iOan/xHh+AW+7K/T8"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+Created
+
+07:29:22.547 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:22.565 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST https://treinamento-api.herokuapp.com/booking
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 168
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+07:29:23.226 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 660.52
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 195
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:16 GMT
+1 < Etag: W/"c3-Hgn0HOW7t3wbXoNXHOll0aSCOGo"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"bookingid":12,"booking":{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}}
+
+07:29:23.234 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > DELETE https://treinamento-api.herokuapp.com/booking/3215
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=
+1 > Connection: Keep-Alive
+1 > Content-Type: application/json
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:29:23.994 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 759.52
+1 < 405
+1 < Connection: keep-alive
+1 < Content-Length: 18
+1 < Content-Type: text/plain; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:17 GMT
+1 < Etag: W/"12-UGJMK66P4abaBlq0vKHJaCKuGCA"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+Method Not Allowed
+
+07:29:24.000 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:24.018 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST https://treinamento-api.herokuapp.com/booking
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 168
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+07:29:24.700 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 680.39
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 195
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:18 GMT
+1 < Etag: W/"c3-SIrSqXzFCWI4yhlnSZi17vIdi4o"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"bookingid":13,"booking":{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}}
+
+07:29:24.707 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > DELETE https://treinamento-api.herokuapp.com/booking/13
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Authorization: Basic tokenInvalido
+1 > Connection: Keep-Alive
+1 > Content-Type: application/json
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:29:25.355 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 647.66
+1 < 403
+1 < Connection: keep-alive
+1 < Content-Length: 9
+1 < Content-Type: text/plain; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:18 GMT
+1 < Etag: W/"9-PatfYBLj4Um1qTm5zrukoLhNyPU"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+Forbidden
+
+07:29:25.404 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 1 of 4: features/BookingDELETE.feature
+07:29:25.415 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:25.426 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST https://treinamento-api.herokuapp.com/booking
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 168
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+07:29:26.093 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 666.18
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 195
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:19 GMT
+1 < Etag: W/"c3-/h+hXkhVYUVpjJBSFQdxRxTcyB8"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"bookingid":14,"booking":{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}}
+
+07:29:26.108 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST https://treinamento-api.herokuapp.com/auth
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 45
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"username":"admin","password":"password123"}
+
+07:29:26.848 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 739.50
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 27
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:20 GMT
+1 < Etag: W/"1b-J9y/xr96sIYcEYuyy1zX+uRGFNQ"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"token":"a03d06fca5710d3"}
+
+07:29:26.849 [ForkJoinPool-1-worker-3] INFO  com.intuit.karate - [print] {
+  "token": "a03d06fca5710d3"
+}
+
+07:29:26.854 [ForkJoinPool-1-worker-3] INFO  com.intuit.karate - [print] a03d06fca5710d3
+07:29:26.871 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > PUT https://treinamento-api.herokuapp.com/booking/14
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 175
+1 > Content-Type: application/json; charset=UTF-8
+1 > Cookie: token=a03d06fca5710d3
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"firstname":"Alteradaco","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+07:29:27.573 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 702.12
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 175
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:20 GMT
+1 < Etag: W/"af-VPKQkFNkYzy5kfuGE8OBZTcEF9s"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"firstname":"Alteradaco","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+07:29:27.580 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:27.589 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST https://treinamento-api.herokuapp.com/booking
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 168
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+07:29:28.302 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 711.58
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 195
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:21 GMT
+1 < Etag: W/"c3-15gRQAueB5IOQ72/3DZWzjv43WA"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"bookingid":15,"booking":{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}}
+
+07:29:28.333 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST https://treinamento-api.herokuapp.com/auth
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 45
+1 > Content-Type: application/json; charset=UTF-8
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"username":"admin","password":"password123"}
+
+07:29:35.185 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+07:29:35.618 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:35.814 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 141605
+1 > Content-Type: multipart/form-data; boundary=1wtg8rX49JwrTiEcwqjvcsAGp4WpDF
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:29:35.863 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 46.07
+1 < 400
+1 < Connection: close
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:29:35 GMT
+1 < Transfer-Encoding: chunked
+{"title":"Bad Request Exception, Check the Documentation","status":400,"details":"The file does not have a compatible format.","timestamp":"2021-11-11T07:29:35.857204"}
+
+07:29:35.903 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 1 of 4: testinho/SendInvalidFileWithValidExtensionPOST.feature
+07:29:35.916 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:35.946 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214356
+1 > Content-Type: multipart/form-data; boundary=6eMIDonwoSG_4cLsF2M0qqeG7yBbZwQGP6oqzn6X
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:29:36.304 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 357.55
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:29:35 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"dbfcc7de-94c1-4f7a-b167-5801d9665eb5"}
+
+07:29:36.305 [ForkJoinPool-1-worker-3] ERROR com.intuit.karate - status code was: 201, expected: 400, response time: 358, url: http://localhost:8081/, response: {"videoId":"dbfcc7de-94c1-4f7a-b167-5801d9665eb5"}
+07:29:36.313 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 2 of 4: testinho/SendFileWithWrongContentTypePOST.feature
+07:29:36.324 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:36.329 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 3 of 4: testinho/SendValidFilePOST.feature
+07:29:36.341 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:36.367 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214350
+1 > Content-Type: multipart/form-data; boundary=LFXMY3SjJPeWj3qzIifRuzH6Mw5hA26tKRtgnQON
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:29:36.676 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 307.19
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:29:35 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"75c8e9cf-93ed-403c-be76-d58862c5ff29"}
+
+07:29:36.677 [ForkJoinPool-1-worker-3] ERROR com.intuit.karate - status code was: 201, expected: 400, response time: 307, url: http://localhost:8081/, response: {"videoId":"75c8e9cf-93ed-403c-be76-d58862c5ff29"}
+07:29:36.680 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 4 of 4: testinho/SendInvalidTypeFilePost.feature
+07:30:35.771 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+07:30:36.183 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:30:36.388 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 141619
+1 > Content-Type: multipart/form-data; boundary=Q_DyRQhtIMrws5dlZZd-hZUJBSNHTyhcn6wWS
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:30:36.423 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 33.07
+1 < 400
+1 < Connection: close
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:30:36 GMT
+1 < Transfer-Encoding: chunked
+{"title":"Bad Request Exception, Check the Documentation","status":400,"details":"The file does not have a compatible format.","timestamp":"2021-11-11T07:30:36.416675"}
+
+07:30:36.481 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 1 of 4: testinho/SendInvalidFileWithValidExtensionPOST.feature
+07:30:36.496 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:30:36.528 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214356
+1 > Content-Type: multipart/form-data; boundary=ldimAe9rvl2xKONqXiF3HkREJ68p8jKypDlv_2jx
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:30:36.880 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 349.94
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:30:36 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"ff7a7754-1c0e-407e-8ca9-c3d65e32246c"}
+
+07:30:36.881 [ForkJoinPool-1-worker-3] ERROR com.intuit.karate - status code was: 201, expected: 400, response time: 350, url: http://localhost:8081/, response: {"videoId":"ff7a7754-1c0e-407e-8ca9-c3d65e32246c"}
+07:30:36.886 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 2 of 4: testinho/SendFileWithWrongContentTypePOST.feature
+07:30:36.917 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:30:36.962 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214344
+1 > Content-Type: multipart/form-data; boundary=s4foJWlL3iWVazMKgNy2IRrkZFHbb_L8FESL7
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:30:37.262 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 298.25
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:30:36 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"26416df0-9bf0-4832-a7eb-9fd398902074"}
+
+07:30:37.265 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 3 of 4: testinho/SendValidFilePOST.feature
+07:30:37.275 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:30:37.301 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214334
+1 > Content-Type: multipart/form-data; boundary=hcnnFGWXIvvXDphaPn_ERyyZh-JKUV96
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:30:37.612 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 309.72
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:30:37 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"212330f1-45c1-48e6-ad81-1b12db337151"}
+
+07:30:37.613 [ForkJoinPool-1-worker-3] ERROR com.intuit.karate - status code was: 201, expected: 400, response time: 310, url: http://localhost:8081/, response: {"videoId":"212330f1-45c1-48e6-ad81-1b12db337151"}
+07:30:37.617 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 4 of 4: testinho/SendInvalidTypeFilePost.feature
+07:33:26.377 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+07:33:26.463 [main] ERROR com.intuit.karate.core.FeatureParser - syntax error: mismatched input '<EOF>' expecting {FEATURE_TAGS, FEATURE}
+07:33:26.464 [main] ERROR com.intuit.karate.core.FeatureParser - not a valid feature file: testinho/SendInvalidFileWithValidExtensionPOST.feature - mismatched input '<EOF>' expecting {FEATURE_TAGS, FEATURE}
+07:33:26.464 [main] ERROR com.intuit.karate.Runner - karate parallel runner failed: 
+07:38:08.661 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+07:38:09.064 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:38:09.267 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214340
+1 > Content-Type: multipart/form-data; boundary=-QOVgXA37bJpFXNZ-GZMBZjXUbBLENNq
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:38:09.583 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 313.93
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:38:09 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"9035a447-c26f-4b0a-b6e0-39cc408a4d44"}
+
+07:38:09.585 [ForkJoinPool-1-worker-3] ERROR com.intuit.karate - status code was: 201, expected: 400, response time: 314, url: http://localhost:8081/, response: {"videoId":"9035a447-c26f-4b0a-b6e0-39cc408a4d44"}
+07:38:09.644 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<fail>> feature 1 of 1: testinho/SendFileWithWrongContentTypePOST.feature
+07:41:16.741 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+07:41:17.183 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:41:17.416 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214340
+1 > Content-Type: video/mp4; boundary=mufAJY6yKZOUWb9rIjo4Y33qjoleLYgFWTN
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:41:17.476 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 57.41
+1 < 400
+1 < Connection: close
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:41:17 GMT
+1 < Transfer-Encoding: chunked
+{"title":"Bad Request Exception, Check the Documentation","status":400,"details":"Current request is not a multipart request","timestamp":"2021-11-11T07:41:17.432711"}
+
+07:41:17.525 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 1 of 1: testinho/SendFileWithWrongContentTypePOST.feature
+07:42:55.653 [main] INFO  com.intuit.karate.Main - Karate version: 0.9.4
+07:42:56.068 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:42:56.275 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 141607
+1 > Content-Type: multipart/form-data; boundary=pEbUHjBO_UEgttzjslLcW-Jo-n1Wxoj
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:42:56.313 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 35.06
+1 < 400
+1 < Connection: close
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:42:56 GMT
+1 < Transfer-Encoding: chunked
+{"title":"Bad Request Exception, Check the Documentation","status":400,"details":"The file does not have a compatible format.","timestamp":"2021-11-11T07:42:56.306491"}
+
+07:42:56.361 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 1 of 4: testinho/SendInvalidFileWithValidExtensionPOST.feature
+07:42:56.376 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:42:56.417 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214346
+1 > Content-Type: video/mp4; boundary=YTA5s2eVebUq6XaI-K3I8ehMn3stxgHhiqu1uU
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:42:56.613 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 195.36
+1 < 400
+1 < Connection: close
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:42:56 GMT
+1 < Transfer-Encoding: chunked
+{"title":"Bad Request Exception, Check the Documentation","status":400,"details":"Current request is not a multipart request","timestamp":"2021-11-11T07:42:56.420597"}
+
+07:42:56.617 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 2 of 4: testinho/SendFileWithWrongContentTypePOST.feature
+07:42:56.627 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:42:56.649 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 10214350
+1 > Content-Type: multipart/form-data; boundary=di1WwrNOk_HOEbIi9aPVkk50GGIqAz6bVYQM5TQm
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:42:56.976 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 324.75
+1 < 201
+1 < Connection: keep-alive
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:42:56 GMT
+1 < Keep-Alive: timeout=60
+1 < Transfer-Encoding: chunked
+{"videoId":"a7ef4d7c-470c-4ffa-8b9a-b42502971d54"}
+
+07:42:56.979 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 3 of 4: testinho/SendValidFilePOST.feature
+07:42:56.988 [ForkJoinPool-1-worker-3] WARN  com.intuit.karate - skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:42:56.993 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - request:
+1 > POST http://localhost:8081/
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 141626
+1 > Content-Type: multipart/form-data; boundary=FWTBxrKIfFkHCz04BIjIIiV3icTkSseNGM2EOWCx
+1 > Host: localhost:8081
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+
+07:42:57.009 [ForkJoinPool-1-worker-3] DEBUG com.intuit.karate - response time in milliseconds: 13.53
+1 < 400
+1 < Connection: close
+1 < Content-Type: application/json
+1 < Date: Thu, 11 Nov 2021 10:42:56 GMT
+1 < Transfer-Encoding: chunked
+{"title":"Bad Request Exception, Check the Documentation","status":400,"details":"The file does not have a compatible format.","timestamp":"2021-11-11T07:42:57.006208"}
+
+07:42:57.014 [pool-1-thread-1] INFO  com.intuit.karate.Runner - <<pass>> feature 4 of 4: testinho/SendInvalidTypeFilePost.feature

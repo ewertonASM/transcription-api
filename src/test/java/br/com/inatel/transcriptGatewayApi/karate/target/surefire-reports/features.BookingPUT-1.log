@@ -1,0 +1,25 @@
+07:29:25.415 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js
+07:29:26.871 request:
+1 > PUT https://treinamento-api.herokuapp.com/booking/14
+1 > Accept: application/json
+1 > Accept-Encoding: gzip,deflate
+1 > Connection: Keep-Alive
+1 > Content-Length: 175
+1 > Content-Type: application/json; charset=UTF-8
+1 > Cookie: token=a03d06fca5710d3
+1 > Host: treinamento-api.herokuapp.com
+1 > User-Agent: Apache-HttpClient/4.5.5 (Java/11.0.11)
+{"firstname":"Alteradaco","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
+07:29:27.574 response time in milliseconds: 702.12
+1 < 200
+1 < Connection: keep-alive
+1 < Content-Length: 175
+1 < Content-Type: application/json; charset=utf-8
+1 < Date: Thu, 11 Nov 2021 10:29:20 GMT
+1 < Etag: W/"af-VPKQkFNkYzy5kfuGE8OBZTcEF9s"
+1 < Server: Cowboy
+1 < Via: 1.1 vegur
+1 < X-Powered-By: Express
+{"firstname":"Alteradaco","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+
